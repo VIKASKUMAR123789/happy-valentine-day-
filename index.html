@@ -1,0 +1,152 @@
+<!DOCTYPE html>
+<html lang="en">
+<head>
+    <meta charset="UTF-8">
+    <meta name="viewport" content="width=device-width, initial-scale=1.0">
+    <title>Valentine's Day Celebration</title>
+    <style>
+        body {
+            background-color: #ffe6f2;
+            text-align: center;
+            font-family: 'Arial', sans-serif;
+            overflow: hidden;
+        }
+        .container {
+            margin-top: 50px;
+        }
+        h1 {
+            color: #ff1493;
+            font-size: 50px;
+            text-shadow: 2px 2px 5px #ff69b4;
+        }
+        .heart {
+            font-size: 50px;
+            color: red;
+            animation: heartbeat 1s infinite alternate;
+        }
+        @keyframes heartbeat {
+            from { transform: scale(1); }
+            to { transform: scale(1.3); }
+        }
+        button {
+            padding: 12px 24px;
+            font-size: 20px;
+            color: white;
+            background-color: #ff1493;
+            border: none;
+            border-radius: 10px;
+            cursor: pointer;
+            margin-top: 20px;
+            transition: 0.3s;
+            position: relative;
+        }
+        button:hover {
+            background-color: #ff69b4;
+        }
+        button:active {
+            transform: scale(0.95);
+        }
+        #message {
+            font-size: 24px;
+            color: #ff1493;
+            margin-top: 20px;
+            font-weight: bold;
+        }
+        .floating-hearts {
+            position: absolute;
+            width: 100%;
+            height: 100%;
+            top: 0;
+            left: 0;
+            pointer-events: none;
+        }
+        .floating-heart {
+            position: absolute;
+            font-size: 30px;
+            color: red;
+            animation: floatUp 4s linear infinite;
+        }
+        @keyframes floatUp {
+            0% { transform: translateY(100vh) scale(0.5); opacity: 1; }
+            100% { transform: translateY(-10vh) scale(1.5); opacity: 0; }
+        }
+    </style>
+</head>
+<body>
+
+    <div class="floating-hearts"></div>
+    <div class="container">
+        <h1>Happy Valentine's Day, Rokhiyaa! <span class="heart">❤</span></h1>
+        <p>My love for you grows stronger every day! 💖</p>
+        <button onclick="showLoveMessage()">Click for Love</button>
+        <p id="message"></p>
+        <audio id="loveSong" loop>
+            <source src="https://www.freesoundslibrary.com/wp-content/uploads/2021/09/romantic-background-music.mp3" type="audio/mp3">
+            Your browser does not support the audio element.
+        </audio>
+        
+    </div>
+    <script>
+        const messages = [
+            "Rokhiyaa, you are my world! ❤❤❤",
+            "Every moment with you is magical! 💕",
+            "You make my heart beat faster! 🌟",
+            "I love you more than words can say! 💖",
+            "Sending you all my love and warm hugs! 🤗❤"
+        ];
+
+        function showLoveMessage() {
+            const randomMessage = messages[Math.floor(Math.random() * messages.length)];
+            document.getElementById('message').innerHTML = randomMessage;
+            playSound();
+        }
+
+        function createHeart() {
+            const heart = document.createElement('div');
+            heart.classList.add('floating-heart');
+            heart.innerHTML = '❤';
+            heart.style.left = Math.random() * 100 + 'vw';
+            heart.style.animationDuration = Math.random() * 3 + 2 + 's';
+            heart.style.fontSize = Math.random() * 20 + 20 + 'px';
+            document.querySelector('.floating-hearts').appendChild(heart);
+            setTimeout(() => { heart.remove(); }, 4000);
+        }
+        setInterval(createHeart, 300);
+
+        function playSound() {
+            const audio = new Audio('.mp3');
+            audio.play();
+        }
+
+        function toggleMusic() {
+            const loveSong = document.getElementById('loveSong');
+            if (loveSong.paused) {
+                loveSong.play();
+            } else {
+                loveSong.pause();
+            }
+        }
+    </script>
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+    <audio controls autoplay loop>
+        <source src="dil.mp3" type="audio/mp3">
+    </audio>
+</body>
+</html>
